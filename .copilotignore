@@ -1,0 +1,85 @@
+# What GitHub Copilot should NOT index / use as context.
+# Drastically improves suggestion quality on large repos by removing noise.
+
+# --- Build output ---
+dist/
+build/
+out/
+.angular/
+.nx/cache/
+coverage/
+
+# --- Dependencies ---
+node_modules/
+.pnp.*
+.yarn/
+
+# --- Generated code ---
+**/*.generated.ts
+**/*.gen.ts
+src/app/api/generated/
+src/generated/
+**/__generated__/
+
+# --- Locale / i18n bulk files ---
+src/assets/i18n/*.json
+src/locale/messages.*.xlf
+
+# --- Vendored libraries ---
+vendor/
+third_party/
+
+# --- Test fixtures / snapshots ---
+**/__snapshots__/
+**/*.snap
+**/fixtures/large-*.json
+e2e/screenshots/
+playwright-report/
+test-results/
+
+# --- Lock files (Copilot doesn't need to read them) ---
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# --- Large data assets ---
+**/*.csv
+**/*.xlsx
+**/*.parquet
+src/assets/data/
+
+# --- Media ---
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.svg
+**/*.webp
+**/*.avif
+**/*.mp4
+**/*.mov
+**/*.pdf
+**/*.zip
+
+# --- Source maps ---
+**/*.map
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Env / secrets (defensive — they shouldn't be committed anyway) ---
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# --- IDE ---
+.idea/
+.vscode/
+*.iml
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
