@@ -30,9 +30,11 @@ i ve WebStormu / IntelliJ (JetBrains Copilot plugin).
     ├── review-component.prompt.md     # review jednoho souboru
     ├── review-branch.prompt.md        # review celé větve vs main/master
     ├── review-pr.prompt.md            # review konkrétního PR (gh CLI)
+    ├── from-jira.prompt.md            # načte Jira ticket, navrhne plán
     ├── fix-onpush-issues.prompt.md
     └── angular-21-upgrade.prompt.md
 .copilotignore                         # co Copilot NEMÁ indexovat
+AGENTS.md                              # setup pro externí integrace (Jira, gh)
 ```
 
 ## Jak to nainstalovat do existujícího projektu
@@ -80,6 +82,15 @@ Můžeš je volat na vybraný soubor / složku / selection.
   compliance + findings + risk & merge readiness). Bez modifikace kódu.
 - **`/review-pr`** — totéž pro existující PR; používá `gh pr view` + `gh pr diff`.
   Vyžaduje nainstalované [`gh` CLI](https://cli.github.com/) a `gh auth login`.
+
+### Jira workflow
+
+- **`/from-jira <KEY-nebo-URL>`** — Copilot načte ticket přes Jira REST API,
+  vrátí strukturovaný extract (popis, AC, komentáře, linked issues) **a plán
+  implementace** (dotčené soubory, který prompt zavolat dál). **Bez modifikace
+  kódu** — počká na schválení, ty pak ručně spustíš `/new-feature`,
+  `/new-component`, migrační prompt atd.
+- Setup (API token, env proměnné, volitelně `acli` / MCP) viz [`AGENTS.md`](./AGENTS.md).
 
 ## Dodatečné doporučení
 
