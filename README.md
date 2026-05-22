@@ -27,7 +27,9 @@ i ve WebStormu / IntelliJ (JetBrains Copilot plugin).
     ├── migrate-ngmodule-to-standalone.prompt.md
     ├── refactor-to-inject.prompt.md
     ├── add-unit-tests.prompt.md
-    ├── review-component.prompt.md
+    ├── review-component.prompt.md     # review jednoho souboru
+    ├── review-branch.prompt.md        # review celé větve vs main/master
+    ├── review-pr.prompt.md            # review konkrétního PR (gh CLI)
     ├── fix-onpush-issues.prompt.md
     └── angular-21-upgrade.prompt.md
 .copilotignore                         # co Copilot NEMÁ indexovat
@@ -64,7 +66,20 @@ Můžeš je volat na vybraný soubor / složku / selection.
 2. Po feature folderech spusť `/migrate-ngmodule-to-standalone`, pak
    `/migrate-to-control-flow`, pak `/convert-to-signals`, pak `/refactor-to-inject`.
 3. Po každém kroku `/add-unit-tests` na změněné komponenty.
-4. `/review-component` jako finální QA.
+4. `/review-component` jako finální QA na jednotlivý soubor.
+5. Před mergem `/review-branch` (porovná feature větev s `main`) nebo
+   `/review-pr <číslo>` (review existujícího PR přes `gh` CLI).
+
+### Code review workflow
+
+- **`/review-component`** — otevři soubor, spusť prompt → strukturovaný report
+  pro jednu komponentu.
+- **`/review-branch`** — v Agent mode zadej "review branch `feature/xyz`
+  vs `main`". Copilot v terminálu udělá `git diff`, projde změny po souborech,
+  cross-checkne s `instructions/*.md` a vrátí report (summary + per-area
+  compliance + findings + risk & merge readiness). Bez modifikace kódu.
+- **`/review-pr`** — totéž pro existující PR; používá `gh pr view` + `gh pr diff`.
+  Vyžaduje nainstalované [`gh` CLI](https://cli.github.com/) a `gh auth login`.
 
 ## Dodatečné doporučení
 
