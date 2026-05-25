@@ -18,7 +18,8 @@ i ve WebStormu / IntelliJ (JetBrains Copilot plugin).
 │   ├── guards-resolvers.instructions.md
 │   ├── pipes-directives.instructions.md
 │   ├── styles.instructions.md
-│   └── tests.instructions.md
+│   ├── tests.instructions.md
+│   └── apexcharts.instructions.md    # ApexCharts senior rules (signals, a11y, perf)
 └── prompts/                           # reusable slash commandy
     ├── new-component.prompt.md
     ├── new-feature.prompt.md
